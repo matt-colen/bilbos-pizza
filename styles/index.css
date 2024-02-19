@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Lord of the Rings";
+  src: url("../assets/fonts/HobbitonBrushhandhobbitonBrush-WygA.ttf")
+    format("truetype");
+}
+
+:root {
+  --font-title: "Lord of the Rings", cursive;
+  --font-body: "Open Sans", sans-serif;
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 32px;
+  --spacing-xl: 64px;
+  --spacing-xxl: 128px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Typography  */
+h1 {
+  font-family: var(--font-title);
+  font-size: 80px;
+  line-height: 1;
+}
+
+/* Utility  */
+.flex {
+  display: flex;
+}
+
+.flex-fully-centered {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Layout  */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header  */
+.header-container {
+  padding: var(--spacing-l);
+}
+
+.logo {
+  width: 400px;
+}
