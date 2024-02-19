@@ -1,21 +1,27 @@
 const menuArray = [
   {
     id: 0,
-    name: "Hobbit Special",
-    toppings: ["pepperoni", "egg", "olives", "red peppers", "mozzarella"],
+    name: "Second Breakfast Special",
+    toppings: [
+      "over-easy egg",
+      "pepperoni",
+      "olives",
+      "red peppers",
+      "mozzarella",
+    ],
     price: 14,
     img: "../assets/images/pizza-1.jpg",
   },
   {
     id: 1,
-    name: "Leafy Greens",
+    name: "Shire Harvest",
     toppings: ["arugula ", "burratta", "mozzarella"],
     price: 12,
     img: "../assets/images/pizza-2.jpg",
   },
   {
     id: 2,
-    name: "Hawaiin",
+    name: "Rivendell Luau Delight",
     toppings: ["chicken", "pineapple", "red onions", "bbq sauce", "mozzarella"],
     price: 12,
     img: "../assets/images/pizza-3.jpg",

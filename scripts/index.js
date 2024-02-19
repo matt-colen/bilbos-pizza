@@ -13,7 +13,7 @@ const getMenuHTML = () => {
       <div class="menu-item-left flex">
         <img class="menu-item-img" src="${itemObj.img}" alt="${itemObj.name} pizza" />
         <div class="menu-item-details flex">
-          <h2>${itemObj.name}</h2>
+          <h3>${itemObj.name}</h3>
           <p class="menu-item-toppings">${menuToppingsHTML}</p>
           <p class="menu-item-price">$${itemObj.price}</p>
         </div>
@@ -27,6 +27,6 @@ const getMenuHTML = () => {
 };
 
 const renderMenuHTML = () =>
-  (document.querySelector("#menuItemContainer").innerHTML = getMenuHTML());
+  (document.querySelector("#menuItemContainer").innerHTML += getMenuHTML());
 
 renderMenuHTML();

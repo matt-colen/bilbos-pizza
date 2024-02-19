@@ -16,7 +16,7 @@
   --font-size-xs: 14px;
   --font-size-s: 16px;
   --font-size-m: 20px;
-  --font-size-l: 32px;
+  --font-size-l: 28px;
   --font-size-xl: 64px;
   --font-size-xxl: 72px;
   --clr-dark: #222;
@@ -38,6 +38,10 @@ body {
   color: var(--clr-dark);
 }
 
+section {
+  margin-bottom: var(--spacing-xl);
+}
+
 button {
   background: none;
   cursor: pointer;
@@ -52,6 +56,11 @@ h1 {
 }
 
 h2 {
+  font-size: var(--font-size-m);
+  color: var(--clr-gray);
+}
+
+h3 {
   font-size: var(--font-size-m);
   line-height: 16.8px;
 }
@@ -86,6 +95,7 @@ h2 {
   padding: var(--spacing-l) 0;
   border-bottom: 1px solid var(--clr-gray-light);
   justify-content: space-between;
+  gap: var(--spacing-s);
 }
 
 .menu-item-left {
