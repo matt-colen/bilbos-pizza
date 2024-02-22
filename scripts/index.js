@@ -18,7 +18,7 @@ const getMenuHTML = () => {
           <p class="menu-item-price">$${itemObj.price}</p>
         </div>
       </div>
-      <button class="btn-plus" data-btn="add"><i class="fa-solid fa-plus"></i></button>
+      <button class="btn-plus" data-add=${itemObj.id}><i class="fa-solid fa-plus"></i></button>
     </div>
     `;
   });
@@ -31,19 +31,15 @@ const renderMenuHTML = () =>
 
 renderMenuHTML();
 
-const showCheckout = (e) => {
-  document.querySelector("#checkout").classList.remove("hidden");
-  updateCart(e);
-};
-
 const updateCart = (e) => {
-  const productID = e.target.closest(".menu-item-container").id;
+  const productID =
+    e.target.dataset.remove || e.target.closest(".menu-item-container").id;
   menuArray.forEach((item) => {
     if (item.id === +productID) {
-      item.inCart = true;
+      item.inCart = !item.inCart;
     }
   });
-  renderCart();
+  renderCart(e);
 };
 
 const getCartTotal = (cartItems) => {
@@ -66,10 +62,10 @@ const getCartHTML = (cartItems) => {
     cartHTML += `
     <div class="checkout-item flex">
       <div class="checkout-item-details flex">
+      <button class="btn-secondary" data-remove=${item.id}>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
         <p>${item.name}</p>
-        <button class="btn-secondary">
-          <i class="fa-solid fa-trash"></i>
-        </button>
       </div>
       <div class="checkout-item-price">
         <p>$${item.price}</p>
@@ -89,12 +85,17 @@ const getCartHTML = (cartItems) => {
 
 const renderCart = () => {
   const itemsInCart = menuArray.filter((item) => item.inCart);
+  if (itemsInCart.length > 0) {
+    document.querySelector("#checkout").classList.remove("hidden");
+  } else {
+    document.querySelector("#checkout").classList.add("hidden");
+  }
   document.querySelector("#checkoutContainer").innerHTML =
     getCartHTML(itemsInCart);
 };
 
 document.addEventListener("click", (e) => {
-  if (e.target.dataset.btn === "add") {
-    showCheckout(e);
+  if (e.target.dataset.add || e.target.dataset.remove) {
+    updateCart(e);
   }
 });

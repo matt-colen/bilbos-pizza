@@ -119,7 +119,6 @@ h3 {
 
 .menu-item-details {
   flex-flow: column;
-  gap: var(--spacing-s);
   line-height: 1;
 }
 
@@ -149,6 +148,10 @@ h3 {
 
 i {
   pointer-events: none;
+}
+
+.fa-xmark {
+  padding: var(--spacing-xs);
 }
 
 /* Checkout section  */
