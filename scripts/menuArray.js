@@ -11,6 +11,8 @@ const menuArray = [
     ],
     price: 14,
     img: "../assets/images/pizza-1.jpg",
+    inCart: false,
+    amountInCart: 0,
   },
   {
     id: 1,
@@ -18,6 +20,8 @@ const menuArray = [
     toppings: ["arugula ", "burratta", "mozzarella"],
     price: 12,
     img: "../assets/images/pizza-2.jpg",
+    inCart: false,
+    amountInCart: 0,
   },
   {
     id: 2,
@@ -25,6 +29,8 @@ const menuArray = [
     toppings: ["chicken", "pineapple", "red onions", "bbq sauce", "mozzarella"],
     price: 12,
     img: "../assets/images/pizza-3.jpg",
+    inCart: false,
+    amountInCart: 0,
   },
 ];
 

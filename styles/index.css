@@ -9,11 +9,11 @@
   --font-body: "Open Sans", sans-serif;
   --spacing-xs: 4px;
   --spacing-s: 8px;
-  --spacing-m: 16px;
+  --spacing-m: 22px;
   --spacing-l: 42px;
   --spacing-xl: 64px;
   --spacing-xxl: 128px;
-  --font-size-xs: 14px;
+  --font-size-xs: 12px;
   --font-size-s: 16px;
   --font-size-m: 20px;
   --font-size-l: 28px;
@@ -23,7 +23,10 @@
   --clr-gray: #8b8b8b;
   --clr-gray-light: #dedede;
   --clr-primary: #16db99;
-  --radius-soft: 2px;
+  --clr-primary-hover: hsl(160, 92%, 37%);
+  --clr-btn-secondary: #bbb;
+  --clr-warning: rgb(234, 14, 14);
+  --radius-soft: 3px;
   --transition-quick: all 0.2s;
 }
 
@@ -34,7 +37,7 @@
 
 body {
   font-family: var(--font-body);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-m);
   color: var(--clr-dark);
 }
 
@@ -43,6 +46,7 @@ section {
 }
 
 button {
+  border: none;
   background: none;
   cursor: pointer;
   transition: var(--transition-quick);
@@ -56,13 +60,13 @@ h1 {
 }
 
 h2 {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-l);
   color: var(--clr-gray);
 }
 
 h3 {
   font-size: var(--font-size-m);
-  line-height: 16.8px;
+  line-height: 1;
 }
 
 /* Utility  */
@@ -73,6 +77,10 @@ h3 {
 .flex-fully-centered {
   justify-content: center;
   align-items: center;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Layout  */
@@ -112,6 +120,7 @@ h3 {
 .menu-item-details {
   flex-flow: column;
   gap: var(--spacing-s);
+  line-height: 1;
 }
 
 .menu-item-toppings {
@@ -123,7 +132,6 @@ h3 {
 .menu-item-price {
   font-size: var(--font-size-m);
   line-height: 1.2;
-  font-weight: bold;
 }
 
 .btn-plus {
@@ -139,8 +147,56 @@ h3 {
   background: var(--clr-primary);
 }
 
-@media only screen and (max-width: 600px) {
+i {
+  pointer-events: none;
+}
+
+/* Checkout section  */
+.checkout-item {
+  justify-content: space-between;
+  margin: var(--spacing-m) 0;
+}
+
+.checkout-item-details {
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+.btn-primary {
+  margin-top: var(--spacing-m);
+  border-radius: var(--radius-soft);
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--clr-primary);
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background: var(--clr-primary-hover);
+}
+
+.btn-secondary {
+  font-size: var(--font-size-xs);
+  color: var(--clr-btn-secondary);
+  transition: var(--transition-quick);
+}
+
+.btn-secondary:hover {
+  color: var(--clr-warning);
+}
+
+.checkout-total {
+  justify-content: space-between;
+  border-top: 1px solid var(--clr-gray);
+  padding: var(--spacing-m) 0;
+}
+
+@media only screen and (max-width: 650px) {
   body {
     padding: 0 var(--spacing-m);
+  }
+  .btn-primary {
+    display: block;
+    width: 100%;
   }
 }
