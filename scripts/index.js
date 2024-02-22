@@ -32,19 +32,19 @@ const renderMenuHTML = () =>
 renderMenuHTML();
 
 const updateCart = (e) => {
-  const productID =
-    e.target.dataset.remove || e.target.closest(".menu-item-container").id;
+  const productID = e.target.dataset.remove || e.target.dataset.add;
+
   menuArray.forEach((item) => {
     if (item.id === +productID) {
-      item.inCart = !item.inCart;
+      e.target.dataset.add ? (item.inCart = true) : (item.inCart = false);
     }
   });
+
   renderCart(e);
 };
 
-const getCartTotal = (cartItems) => {
-  return cartItems.reduce((total, currentItem) => total + currentItem.price, 0);
-};
+const getCartTotal = (cartItems) =>
+  cartItems.reduce((total, currentItem) => total + currentItem.price, 0);
 
 const getCartTotalHTML = (cartItems) => {
   let cartTotalHTML = "";
