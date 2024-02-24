@@ -33,14 +33,18 @@ renderMenuHTML();
 
 const updateCart = (e) => {
   const productID = e.target.dataset.remove || e.target.dataset.add;
-
   menuArray.forEach((item) => {
     if (item.id === +productID) {
       e.target.dataset.add ? (item.inCart = true) : (item.inCart = false);
     }
   });
-
   renderCart(e);
+};
+
+const resetCart = () => {
+  menuArray.forEach((item) => {
+    item.inCart = false;
+  });
 };
 
 const getCartTotal = (cartItems) =>
@@ -57,7 +61,6 @@ const getCartTotalHTML = (cartItems) => {
 
 const getCartHTML = (cartItems) => {
   let cartHTML = "";
-
   cartItems.forEach((item) => {
     cartHTML += `
     <div class="checkout-item flex">
@@ -73,13 +76,11 @@ const getCartHTML = (cartItems) => {
     </div>
     `;
   });
-
   cartHTML += `
     <div id="checkoutTotal" class="checkout-total flex">${getCartTotalHTML(
       cartItems
     )}</div>
   `;
-
   return cartHTML;
 };
 
@@ -102,11 +103,46 @@ const togglePaymentModal = () => {
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.add || e.target.dataset.remove) {
+    const successMessage = document.querySelector("#success-message");
     updateCart(e);
+    if (!successMessage.classList.contains("hidden")) {
+      toggleSuccessMessage(successMessage);
+    }
   } else if (
     e.target.id === "complete-order-btn" ||
     e.target.id === "modal-close-btn-container"
   ) {
     togglePaymentModal();
   }
+});
+
+const getSuccessMessage = (name) => {
+  return `
+  <p>Thanks ${name}! Your order is on its way.
+  `;
+};
+
+const toggleSuccessMessage = (message) => message.classList.toggle("hidden");
+
+const renderSuccessMessage = (message) => {
+  const successMessage = document.querySelector("#success-message");
+  successMessage.innerHTML = message;
+  toggleSuccessMessage(successMessage);
+};
+
+document.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const userName = document.querySelector("#name").value;
+  const successMessage = getSuccessMessage(userName);
+  const form = e.target;
+  // Clears input values from the form
+  Array.from(form.elements).forEach((element) => {
+    if (element.tagName.toLowerCase() === "input") {
+      element.value = "";
+    }
+  });
+  renderSuccessMessage(successMessage);
+  resetCart();
+  renderCart();
+  togglePaymentModal();
 });

@@ -261,6 +261,15 @@ i {
   padding: 16px 27px;
 }
 
+/* Success Message  */
+.success-message {
+  border-radius: var(--radius-soft);
+  background: #ecfdf5;
+  margin-top: var(--spacing-l);
+  padding: var(--spacing-l);
+  text-align: center;
+}
+
 @media only screen and (max-width: 650px) {
   body {
     padding: 0 var(--spacing-m);
