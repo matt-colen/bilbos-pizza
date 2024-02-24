@@ -25,68 +25,63 @@
       <div class="container">
         <div class="header-container">
           <h1>Bilbo's Pizza</h1>
-          <p class="tagline">It's worth the trip to Middle-Earth</p>
+          <p class="tagline">...Worth the trip to Middle-Earth</p>
         </div>
       </div>
     </header>
+
     <main>
       <div class="container">
-        <div class="primary-container">
-          <section id="menu">
-            <h2>Pizzas</h2>
-            <div id="menuItemContainer" class="menu-container"></div>
-            <p id="success-message" class="success-message hidden"></p>
-          </section>
-          <section id="checkout" class="hidden">
-            <h2>Your order</h2>
-            <div id="checkoutContainer" class="checkout-container"></div>
-            <div class="btn-purchase">
-              <button id="complete-order-btn" class="btn-primary">
-                Complete order
-              </button>
-            </div>
-          </section>
-        </div>
-        <div id="modal-overlay" class="modal-overlay hidden"></div>
-        <div class="modal-container">
-          <section id="payment-modal" class="payment-modal hidden">
-            <button
-              id="modal-close-btn-container"
-              class="modal-close-btn-container"
-            >
-              <i class="fa-solid fa-xmark modal-close-btn"></i>
-            </button>
-            <h2 class="payment-modal-header">Enter card details</h2>
-            <form class="payment-form flex">
-              <label for="name">
-                <input
-                  id="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  required
-                />
-              </label>
-              <label for="card-number">
-                <input
-                  id="card-number"
-                  type="text"
-                  placeholder="Enter card number"
-                  required
-                />
-              </label>
-              <label for="cvv">
-                <input
-                  id="cvv"
-                  type="text"
-                  placeholder="Enter CVV"
-                  maxlength="4"
-                  required
-                />
-              </label>
-              <button class="btn-primary" type="submit">Pay</button>
-            </form>
-          </section>
-        </div>
+        <section id="menu">
+          <h2>Pizzas</h2>
+          <div id="menuItemsContainer" class="menu-items-container"></div>
+          <p id="successMessage" class="success-message hidden"></p>
+        </section>
+
+        <section id="checkout" class="hidden">
+          <h2>Your order</h2>
+          <div id="checkoutContainer" class="checkout-container"></div>
+          <button id="complete-order-btn" class="btn-primary">
+            Complete order
+          </button>
+        </section>
+
+        <div id="modalOverlay" class="modal-overlay hidden"></div>
+
+        <section id="modal" class="modal hidden">
+          <button id="modalCloseBtn" class="modal-close-btn">
+            <i class="fa-solid fa-xmark modal-close-btn"></i>
+          </button>
+          <h2 class="modal-header">Enter card details</h2>
+          <form class="modal-form flex">
+            <label for="name">
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+                required
+              />
+            </label>
+            <label for="card-number">
+              <input
+                id="card-number"
+                type="text"
+                placeholder="Enter card number"
+                required
+              />
+            </label>
+            <label for="cvv">
+              <input
+                id="cvv"
+                type="text"
+                placeholder="Enter CVV"
+                maxlength="4"
+                required
+              />
+            </label>
+            <button class="btn-primary" type="submit">Pay</button>
+          </form>
+        </section>
       </div>
     </main>
   </body>

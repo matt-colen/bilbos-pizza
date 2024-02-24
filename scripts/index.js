@@ -27,7 +27,7 @@ const getMenuHTML = () => {
 };
 
 const renderMenuHTML = () =>
-  (document.querySelector("#menuItemContainer").innerHTML += getMenuHTML());
+  (document.querySelector("#menuItemsContainer").innerHTML += getMenuHTML());
 
 renderMenuHTML();
 
@@ -96,21 +96,21 @@ const renderCart = () => {
 };
 
 const togglePaymentModal = () => {
-  document.querySelector("#payment-modal").classList.toggle("hidden");
-  document.querySelector("#modal-overlay").classList.toggle("hidden");
+  document.querySelector("#modal").classList.toggle("hidden");
+  document.querySelector("#modalOverlay").classList.toggle("hidden");
   document.body.classList.toggle("modal-open");
 };
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.add || e.target.dataset.remove) {
-    const successMessage = document.querySelector("#success-message");
+    const successMessage = document.querySelector("#successMessage");
     updateCart(e);
     if (!successMessage.classList.contains("hidden")) {
       toggleSuccessMessage(successMessage);
     }
   } else if (
     e.target.id === "complete-order-btn" ||
-    e.target.id === "modal-close-btn-container"
+    e.target.id === "modalCloseBtn"
   ) {
     togglePaymentModal();
   }
@@ -125,7 +125,7 @@ const getSuccessMessage = (name) => {
 const toggleSuccessMessage = (message) => message.classList.toggle("hidden");
 
 const renderSuccessMessage = (message) => {
-  const successMessage = document.querySelector("#success-message");
+  const successMessage = document.querySelector("#successMessage");
   successMessage.innerHTML = message;
   toggleSuccessMessage(successMessage);
 };

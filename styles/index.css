@@ -23,8 +23,8 @@
   --clr-gray: #8b8b8b;
   --clr-gray-light: #dedede;
   --clr-modal-border: #757575;
-  --clr-primary: #16db99;
-  --clr-primary-hover: hsl(160, 92%, 37%);
+  --clr-primary: hsl(166, 69%, 44%);
+  --clr-primary-hover: hsl(166, 79%, 34%);
   --clr-btn-secondary: #bbb;
   --clr-warning: rgb(234, 14, 14);
   --radius-soft: 3px;
@@ -98,6 +98,7 @@ h3 {
 
 .tagline {
   text-transform: uppercase;
+  font-size: var(--font-size-s);
 }
 
 /* Menu Items Section */
@@ -131,6 +132,7 @@ h3 {
 }
 
 .menu-item-price {
+  margin-top: var(--spacing-m);
   font-size: var(--font-size-m);
   line-height: 1.2;
 }
@@ -208,7 +210,7 @@ i {
   z-index: 999;
 }
 
-.payment-modal {
+.modal {
   border-radius: var(--radius-soft);
   padding: 0 var(--spacing-m) 30px;
   background: #fff;
@@ -223,7 +225,7 @@ i {
   z-index: 999;
 }
 
-.modal-close-btn-container {
+.modal-close-btn {
   position: fixed;
   top: 0;
   right: 0;
@@ -238,26 +240,26 @@ i {
   font-size: var(--font-size-m);
 }
 
-.payment-modal-header {
+.modal-header {
   font-weight: bold;
   padding: var(--spacing-l) 0;
 }
 
-.payment-form {
+.modal-form {
   flex-flow: column;
   gap: var(--spacing-m);
   align-items: stretch;
 }
 
-.payment-form input {
+.modal-form input {
   border: 1.297px solid var(--clr-modal-border);
   border-radius: var(--radius-soft);
   color: var(--clr-modal-border);
   width: 100%;
 }
 
-.payment-form input,
-.payment-form button {
+.modal-form input,
+.modal-form button {
   padding: 16px 27px;
 }
 
@@ -277,5 +279,8 @@ i {
   .btn-primary {
     display: block;
     width: 100%;
+  }
+  .modal {
+    height: 80vh;
   }
 }
