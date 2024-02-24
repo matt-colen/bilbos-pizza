@@ -22,6 +22,7 @@
   --clr-dark: #222;
   --clr-gray: #8b8b8b;
   --clr-gray-light: #dedede;
+  --clr-modal-border: #757575;
   --clr-primary: #16db99;
   --clr-primary-hover: hsl(160, 92%, 37%);
   --clr-btn-secondary: #bbb;
@@ -33,6 +34,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -60,7 +62,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
   color: var(--clr-gray);
 }
 
@@ -85,7 +87,7 @@ h3 {
 
 /* Layout  */
 .container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -192,6 +194,71 @@ i {
   justify-content: space-between;
   border-top: 1px solid var(--clr-gray);
   padding: var(--spacing-m) 0;
+}
+
+/* Payment modal  */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--clr-dark);
+  opacity: 0.7;
+  z-index: 999;
+}
+
+.payment-modal {
+  border-radius: var(--radius-soft);
+  padding: 0 var(--spacing-m) 30px;
+  background: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 700px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.modal-close-btn-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: var(--spacing-s);
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-close-btn {
+  font-size: var(--font-size-m);
+}
+
+.payment-modal-header {
+  font-weight: bold;
+  padding: var(--spacing-l) 0;
+}
+
+.payment-form {
+  flex-flow: column;
+  gap: var(--spacing-m);
+  align-items: stretch;
+}
+
+.payment-form input {
+  border: 1.297px solid var(--clr-modal-border);
+  border-radius: var(--radius-soft);
+  color: var(--clr-modal-border);
+  width: 100%;
+}
+
+.payment-form input,
+.payment-form button {
+  padding: 16px 27px;
 }
 
 @media only screen and (max-width: 650px) {

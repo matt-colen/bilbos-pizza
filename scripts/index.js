@@ -94,8 +94,19 @@ const renderCart = () => {
     getCartHTML(itemsInCart);
 };
 
+const togglePaymentModal = () => {
+  document.querySelector("#payment-modal").classList.toggle("hidden");
+  document.querySelector("#modal-overlay").classList.toggle("hidden");
+  document.body.classList.toggle("modal-open");
+};
+
 document.addEventListener("click", (e) => {
   if (e.target.dataset.add || e.target.dataset.remove) {
     updateCart(e);
+  } else if (
+    e.target.id === "complete-order-btn" ||
+    e.target.id === "modal-close-btn-container"
+  ) {
+    togglePaymentModal();
   }
 });

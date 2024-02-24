@@ -31,18 +31,61 @@
     </header>
     <main>
       <div class="container">
-        <section id="menu">
-          <h2>Pizzas</h2>
-          <div id="menuItemContainer" class="menu-container"></div>
-        </section>
-        <section id="checkout" class="hidden">
-          <h2>Your order</h2>
-          <div id="checkoutContainer" class="checkout-container">
+        <div class="primary-container">
+          <section id="menu">
+            <h2>Pizzas</h2>
+            <div id="menuItemContainer" class="menu-container"></div>
+          </section>
+          <section id="checkout" class="hidden">
+            <h2>Your order</h2>
+            <div id="checkoutContainer" class="checkout-container"></div>
             <div class="btn-purchase">
-              <button class="btn-primary">Complete order</button>
+              <button id="complete-order-btn" class="btn-primary">
+                Complete order
+              </button>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+        <div id="modal-overlay" class="modal-overlay hidden"></div>
+        <div class="modal-container">
+          <section id="payment-modal" class="payment-modal hidden">
+            <button
+              id="modal-close-btn-container"
+              class="modal-close-btn-container"
+            >
+              <i class="fa-solid fa-xmark modal-close-btn"></i>
+            </button>
+            <h2 class="payment-modal-header">Enter card details</h2>
+            <form class="payment-form flex">
+              <label for="name">
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  required
+                />
+              </label>
+              <label for="card-number">
+                <input
+                  id="card-number"
+                  type="text"
+                  placeholder="Enter card number"
+                  required
+                />
+              </label>
+              <label for="cvv">
+                <input
+                  id="cvv"
+                  type="text"
+                  placeholder="Enter CVV"
+                  maxlength="4"
+                  required
+                />
+              </label>
+              <button class="btn-primary" type="submit">Pay</button>
+            </form>
+          </section>
+        </div>
       </div>
     </main>
   </body>
