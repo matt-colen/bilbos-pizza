@@ -1,11 +1,11 @@
 @font-face {
-  font-family: "Lord of the Rings";
+  font-family: "Hobbiton";
   src: url("../assets/fonts/HobbitonBrushhandhobbitonBrush-WygA.ttf")
     format("truetype");
 }
 
 :root {
-  --font-title: "Lord of the Rings", cursive;
+  --font-title: "Hobbiton", cursive;
   --font-body: "Open Sans", sans-serif;
   --spacing-xs: 4px;
   --spacing-s: 8px;
@@ -19,14 +19,16 @@
   --font-size-l: 28px;
   --font-size-xl: 64px;
   --font-size-xxl: 72px;
-  --clr-dark: #222;
-  --clr-gray: #8b8b8b;
-  --clr-gray-light: #dedede;
-  --clr-modal-border: #757575;
-  --clr-primary: hsl(166, 69%, 44%);
-  --clr-primary-hover: hsl(166, 79%, 34%);
-  --clr-btn-secondary: #bbb;
-  --clr-warning: rgb(234, 14, 14);
+  --clr-dark: hsl(0, 0%, 13%);
+  --clr-light: hsl(0, 0%, 100%);
+  --clr-gray: hsl(0, 0%, 55%);
+  --clr-gray-light: hsl(0, 0%, 87%);
+  --clr-modal-border: hsl(0, 0%, 46%);
+  --clr-primary: hsl(152, 81%, 76%);
+  --clr-primary-hover: hsl(152, 91%, 66%);
+  --clr-btn-secondary: hsl(0, 0%, 73%);
+  --clr-success: hsl(152, 81%, 96%);
+  --clr-warning: hsl(0, 89%, 49%);
   --radius-soft: 3px;
   --transition-quick: all 0.2s;
 }
@@ -39,19 +41,12 @@
 
 body {
   font-family: var(--font-body);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   color: var(--clr-dark);
 }
 
 section {
   margin-bottom: var(--spacing-xl);
-}
-
-button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  transition: var(--transition-quick);
 }
 
 /* Typography  */
@@ -61,24 +56,77 @@ h1 {
   line-height: 1;
 }
 
-h2 {
+h2,
+h3 {
   font-size: var(--font-size-m);
+}
+
+h2 {
   color: var(--clr-gray);
 }
 
 h3 {
-  font-size: var(--font-size-m);
   line-height: 1;
+}
+
+input {
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
+}
+
+/* Buttons/Icons  */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-quick);
+}
+
+.btn-plus {
+  width: 50px;
+  height: 50px;
+  border: 1.5px solid var(--clr-gray-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.btn-plus:hover {
+  background: var(--clr-primary-hover);
+}
+
+.btn-primary {
+  margin-top: var(--spacing-m);
+  border-radius: var(--radius-soft);
+  padding: var(--spacing-s) var(--spacing-m);
+  background: var(--clr-primary);
+  color: var(--clr-dark);
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background: var(--clr-primary-hover);
+}
+
+.modal-close-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: var(--spacing-m);
+}
+
+i {
+  pointer-events: none;
+  color: var(--clr-dark);
+}
+
+.fa-xmark {
+  font-size: var(--font-size-m);
+  padding: var(--spacing-s);
 }
 
 /* Utility  */
 .flex {
   display: flex;
-}
-
-.flex-fully-centered {
-  justify-content: center;
-  align-items: center;
 }
 
 .hidden {
@@ -87,7 +135,7 @@ h3 {
 
 /* Layout  */
 .container {
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -99,6 +147,7 @@ h3 {
 .tagline {
   text-transform: uppercase;
   font-size: var(--font-size-s);
+  color: var(--clr-gray);
 }
 
 /* Menu Items Section */
@@ -106,7 +155,7 @@ h3 {
   padding: var(--spacing-l) 0;
   border-bottom: 1px solid var(--clr-gray-light);
   justify-content: space-between;
-  gap: var(--spacing-s);
+  gap: var(--spacing-m);
 }
 
 .menu-item-left {
@@ -114,15 +163,14 @@ h3 {
 }
 
 .menu-item-img {
-  min-width: 70px;
-  height: 89px;
+  min-width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: var(--radius-soft);
 }
 
 .menu-item-details {
   flex-flow: column;
-  line-height: 1;
 }
 
 .menu-item-toppings {
@@ -132,30 +180,10 @@ h3 {
 }
 
 .menu-item-price {
-  margin-top: var(--spacing-m);
+  margin-top: var(--spacing-s);
   font-size: var(--font-size-m);
+  font-weight: bold;
   line-height: 1.2;
-}
-
-.btn-plus {
-  display: block;
-  width: 50px;
-  height: 50px;
-  border: 1.5px solid var(--clr-gray-light);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.btn-plus:hover {
-  background: var(--clr-primary);
-}
-
-i {
-  pointer-events: none;
-}
-
-.fa-xmark {
-  padding: var(--spacing-xs);
 }
 
 /* Checkout section  */
@@ -169,33 +197,11 @@ i {
   gap: var(--spacing-s);
 }
 
-.btn-primary {
-  margin-top: var(--spacing-m);
-  border-radius: var(--radius-soft);
-  padding: var(--spacing-s) var(--spacing-m);
-  background: var(--clr-primary);
-  color: #fff;
-  font-weight: bold;
-}
-
-.btn-primary:hover {
-  background: var(--clr-primary-hover);
-}
-
-.btn-secondary {
-  font-size: var(--font-size-xs);
-  color: var(--clr-btn-secondary);
-  transition: var(--transition-quick);
-}
-
-.btn-secondary:hover {
-  color: var(--clr-warning);
-}
-
 .checkout-total {
   justify-content: space-between;
-  border-top: 1px solid var(--clr-gray);
+  border-top: 1px solid var(--clr-gray-light);
   padding: var(--spacing-m) 0;
+  font-weight: bold;
 }
 
 /* Payment modal  */
@@ -206,38 +212,27 @@ i {
   width: 100%;
   height: 100%;
   background: var(--clr-dark);
-  opacity: 0.7;
+  opacity: 0.9;
   z-index: 999;
 }
 
 .modal {
   border-radius: var(--radius-soft);
   padding: 0 var(--spacing-m) 30px;
-  background: #fff;
+  background: var(--clr-light);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 100%;
-  max-width: 700px;
   transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
   z-index: 999;
-}
-
-.modal-close-btn {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: var(--spacing-s);
 }
 
 .modal-open {
   overflow: hidden;
-}
-
-.modal-close-btn {
-  font-size: var(--font-size-m);
 }
 
 .modal-header {
@@ -263,22 +258,29 @@ i {
   padding: 16px 27px;
 }
 
-/* Success Message  */
+/* Success Message */
 .success-message {
   border-radius: var(--radius-soft);
-  background: #ecfdf5;
+  background: var(--clr-success);
   margin-top: var(--spacing-l);
   padding: var(--spacing-l);
   text-align: center;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 750px) {
   body {
     padding: 0 var(--spacing-m);
   }
+  h1 {
+    font-size: 50px;
+  }
+  .menu-item-img {
+    min-width: 75px;
+    height: 75px;
+  }
   .btn-primary {
-    display: block;
     width: 100%;
+    padding: 16px 27px;
   }
   .modal {
     height: 80vh;
