@@ -2,12 +2,10 @@ import menuArray from "./menuArray.js";
 
 const getMenuHTML = () => {
   let menuHTML = "";
-
   menuArray.forEach((itemObj) => {
     const menuToppingsHTML = itemObj.toppings
       .map((topping) => topping)
       .join(", ");
-
     menuHTML += `
     <div id="${itemObj.id}" class="menu-item-container flex">
       <div class="menu-item-left flex">
@@ -22,7 +20,6 @@ const getMenuHTML = () => {
     </div>
     `;
   });
-
   return menuHTML;
 };
 
@@ -134,11 +131,9 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const getSuccessMessage = (name) => {
-  return `
+const getSuccessMessage = (name) => `
   <p>Thanks ${name}! Your order is on its way.
   `;
-};
 
 const toggleSuccessMessage = (message) => message.classList.toggle("hidden");
 
