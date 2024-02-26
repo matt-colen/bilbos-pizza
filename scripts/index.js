@@ -35,7 +35,13 @@ const updateCart = (e) => {
   const productID = e.target.dataset.remove || e.target.dataset.add;
   menuArray.forEach((item) => {
     if (item.id === +productID) {
-      e.target.dataset.add ? (item.inCart = true) : (item.inCart = false);
+      if (e.target.dataset.add) {
+        item.inCart = true;
+        item.amountInCart++;
+      } else {
+        item.inCart = false;
+        item.amountInCart = 0;
+      }
     }
   });
   renderCart(e);
@@ -44,11 +50,15 @@ const updateCart = (e) => {
 const resetCart = () => {
   menuArray.forEach((item) => {
     item.inCart = false;
+    item.amountInCart = 0;
   });
 };
 
 const getCartTotal = (cartItems) =>
-  cartItems.reduce((total, currentItem) => total + currentItem.price, 0);
+  cartItems.reduce(
+    (total, currentItem) => total + currentItem.getTotalPrice(),
+    0
+  );
 
 const getCartTotalHTML = (cartItems) => {
   let cartTotalHTML = "";
@@ -65,13 +75,20 @@ const getCartHTML = (cartItems) => {
     cartHTML += `
     <div class="checkout-item flex">
       <div class="checkout-item-details flex">
-      <button class="btn-secondary" data-remove=${item.id}>
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+        <button class="btn-secondary" data-remove=${item.id}>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
         <p>${item.name}</p>
+        <div class="flex item-quantity">
+          <p>• 
+          <input class="item-quantity-input" type="number" min="0" max="100" data-update=${
+            item.id
+          } value="${item.amountInCart}"/>
+          <p> in cart</p>
+        </div>
       </div>
       <div class="checkout-item-price">
-        <p>$${item.price}</p>
+        <p>$${item.getTotalPrice()}</p>
       </div>
     </div>
     `;
@@ -145,4 +162,26 @@ document.addEventListener("submit", (e) => {
   resetCart();
   renderCart();
   togglePaymentModal();
+});
+
+const updateCartWithUserVal = (e) => {
+  const productID = e.target.dataset.update;
+  menuArray.forEach((item) => {
+    if (item.id === +productID) {
+      const itemValue = +e.target.value;
+      if (itemValue > 0) {
+        item.amountInCart = itemValue;
+      } else {
+        item.amountInCart = 0;
+        item.inCart = false;
+      }
+    }
+  });
+  renderCart(e);
+};
+
+document.addEventListener("change", (e) => {
+  if (e.target.classList.contains("item-quantity-input")) {
+    updateCartWithUserVal(e);
+  }
 });

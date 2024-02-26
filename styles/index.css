@@ -188,6 +188,7 @@ i {
 
 /* Checkout section  */
 .checkout-item {
+  align-items: center;
   justify-content: space-between;
   margin: var(--spacing-m) 0;
 }
@@ -195,6 +196,19 @@ i {
 .checkout-item-details {
   align-items: center;
   gap: var(--spacing-s);
+}
+
+.item-quantity {
+  align-items: center;
+}
+
+.item-quantity-input {
+  border: none;
+  border-bottom: 1.5px solid var(--clr-gray);
+  padding: var(--spacing-s);
+  width: 70px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .checkout-total {
