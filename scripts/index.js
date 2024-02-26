@@ -75,16 +75,17 @@ const getCartHTML = (cartItems) => {
     cartHTML += `
     <div class="checkout-item flex">
       <div class="checkout-item-details flex">
-        <button class="btn-secondary" data-remove=${item.id}>
+        <button class="btn-secondary" aria-label="Remove item from cart" data-remove=${
+          item.id
+        }>
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <p>${item.name}</p>
+        <p class="small-text">${item.name}</p>
         <div class="flex item-quantity">
-          <p>• 
-          <input class="item-quantity-input" type="number" min="0" max="100" data-update=${
+          <pre>• </pre>
+          <input class="item-quantity-input" type="number" min="0" max="100" aria-label="Update item quantity in cart" data-update=${
             item.id
           } value="${item.amountInCart}"/>
-          <p> in cart</p>
         </div>
       </div>
       <div class="checkout-item-price">

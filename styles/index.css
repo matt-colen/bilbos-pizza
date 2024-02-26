@@ -21,11 +21,12 @@
   --font-size-xxl: 72px;
   --clr-dark: hsl(0, 0%, 13%);
   --clr-light: hsl(0, 0%, 100%);
-  --clr-gray: hsl(0, 0%, 55%);
+  --clr-gray: hsl(0, 0%, 45%);
   --clr-gray-light: hsl(0, 0%, 87%);
   --clr-modal-border: hsl(0, 0%, 46%);
   --clr-primary: hsl(152, 81%, 76%);
   --clr-primary-hover: hsl(152, 91%, 66%);
+  --clr-secondary: hsl(152, 8%, 98%);
   --clr-btn-secondary: hsl(0, 0%, 73%);
   --clr-success: hsl(152, 81%, 96%);
   --clr-warning: hsl(0, 89%, 49%);
@@ -67,6 +68,10 @@ h2 {
 
 h3 {
   line-height: 1;
+}
+
+.small-text {
+  font-size: var(--font-size-xs);
 }
 
 input {
@@ -135,8 +140,11 @@ i {
 
 /* Layout  */
 .container {
-  max-width: 700px;
+  max-width: 1300px;
   margin: 0 auto;
+  gap: var(--spacing-xl);
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 /* Header  */
@@ -147,7 +155,6 @@ i {
 .tagline {
   text-transform: uppercase;
   font-size: var(--font-size-s);
-  color: var(--clr-gray);
 }
 
 /* Menu Items Section */
@@ -187,6 +194,29 @@ i {
 }
 
 /* Checkout section  */
+.checkout {
+  background: var(--clr-secondary);
+  border-radius: var(--radius-soft);
+  padding: var(--spacing-m);
+  min-width: 600px;
+  animation: tilt-in-tr 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes tilt-in-tr {
+  0% {
+    -webkit-transform: rotateY(-35deg) rotateX(20deg) translate(250px, -250px)
+      skew(-12deg, -15deg);
+    transform: rotateY(-35deg) rotateX(20deg) translate(250px, -250px)
+      skew(-12deg, -15deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+    transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+    opacity: 1;
+  }
+}
+
 .checkout-item {
   align-items: center;
   justify-content: space-between;
@@ -203,6 +233,7 @@ i {
 }
 
 .item-quantity-input {
+  background: var(--clr-light);
   border: none;
   border-bottom: 1.5px solid var(--clr-gray);
   padding: var(--spacing-s);
@@ -282,9 +313,6 @@ i {
 }
 
 @media only screen and (max-width: 750px) {
-  body {
-    padding: 0 var(--spacing-m);
-  }
   h1 {
     font-size: 50px;
   }
@@ -298,5 +326,23 @@ i {
   }
   .modal {
     height: 80vh;
+  }
+  .checkout {
+    background: none;
+    min-width: 100%;
+    padding: 0;
+    animation: none;
+  }
+  .item-quantity-input {
+    background: var(--clr-secondary);
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  body {
+    padding: 0 var(--spacing-m);
+  }
+  .container {
+    flex-flow: column;
   }
 }

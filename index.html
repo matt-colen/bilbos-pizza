@@ -31,14 +31,18 @@
     </header>
 
     <main>
-      <div class="container">
+      <div class="container flex">
         <section id="menu">
           <h2>Pizzas</h2>
           <div id="menuItemsContainer" class="menu-items-container"></div>
-          <p id="successMessage" class="success-message hidden"></p>
+          <p
+            id="successMessage"
+            class="success-message hidden"
+            aria-live="assertive"
+          ></p>
         </section>
 
-        <section id="checkout" class="hidden">
+        <section id="checkout" class="checkout hidden">
           <h2>Your order</h2>
           <div id="checkoutContainer" class="checkout-container"></div>
           <button id="complete-order-btn" class="btn-primary">
@@ -49,7 +53,11 @@
         <div id="modalOverlay" class="modal-overlay hidden"></div>
 
         <section id="modal" class="modal hidden">
-          <button id="modalCloseBtn" class="modal-close-btn">
+          <button
+            id="modalCloseBtn"
+            class="modal-close-btn"
+            aria-label="Close payment pop up"
+          >
             <i class="fa-solid fa-xmark modal-close-btn"></i>
           </button>
           <h2 class="modal-header">Enter card details</h2>
@@ -65,7 +73,8 @@
             <label for="card-number">
               <input
                 id="card-number"
-                type="text"
+                type="number"
+                min="0"
                 placeholder="Enter card number"
                 required
               />
@@ -73,9 +82,10 @@
             <label for="cvv">
               <input
                 id="cvv"
-                type="text"
-                placeholder="Enter CVV"
+                type="number"
+                num="0"
                 maxlength="4"
+                placeholder="Enter CVV"
                 required
               />
             </label>
