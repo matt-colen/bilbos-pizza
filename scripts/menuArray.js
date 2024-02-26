@@ -13,6 +13,9 @@ const menuArray = [
     img: "../assets/images/pizza-1.jpg",
     inCart: false,
     amountInCart: 0,
+    getTotalPrice() {
+      return this.amountInCart * this.price;
+    },
   },
   {
     id: 1,
@@ -22,6 +25,9 @@ const menuArray = [
     img: "../assets/images/pizza-2.jpg",
     inCart: false,
     amountInCart: 0,
+    getTotalPrice() {
+      return this.amountInCart * this.price;
+    },
   },
   {
     id: 2,
@@ -31,6 +37,9 @@ const menuArray = [
     img: "../assets/images/pizza-3.jpg",
     inCart: false,
     amountInCart: 0,
+    getTotalPrice() {
+      return this.amountInCart * this.price;
+    },
   },
 ];
 
