@@ -1,2 +1,2 @@
 # mobile-restaurant-menu
- A mobile restaurant menu to order completion flow
+ A mobile restaurant menu and order completion flow.
